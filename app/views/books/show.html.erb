@@ -1,0 +1,17 @@
+<main>
+	<div class="show-contents">
+		<section class="show">
+			<h5 class="show-title">Title:</h5>
+			<p class="show-content"><%= @book.title %></p>
+		</section>
+		<section class="show">
+			<h5 class="show-title">Body:</h5>
+			<p class="show-content"><%= @book.body %></p>
+		</section>
+	</div>
+	<div class="links">
+		<%= link_to "Edit", edit_book_path(@book) %>
+		<span>|</span>
+		<%= link_to "Back", books_path %>
+	</div>
+</main>

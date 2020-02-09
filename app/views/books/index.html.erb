@@ -1,0 +1,45 @@
+<main>
+	<h2 class="page-heading">Books</h2>
+	<table class="book-index">
+		<thead class="book-titles">
+			<tr>
+				<th class="headline-title">Title</th>
+				<th class="headline-body">Body</th>
+			</tr>
+		</thead>
+
+		<tbody class="book">
+		<% @books.each do |book| %>
+			<tr class="book-contents">
+				<td class="book-title">
+					<%= book.title %>
+				</td>
+				<td class="book-body">
+					<%= book.body %>
+				</td>
+				<td class="book-link">
+					<%= link_to "Show", book_path(book) %>
+				</td>
+				<td class="book-link">
+					<%= link_to "Edit", edit_book_path(book) %>
+				</td>
+				<td class="book-link">
+					<%= link_to "Destroy", destroy_book_path(book), method: :delete %>
+				</td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+	<div class="new-book">
+		<h3 class="new-book-heading">New book</h3>
+		<div class="textarea">
+			<%= form_for(@book, url:'/books') do |f| %>
+				<p>Title</p>
+				<span class="title-text"><%= f.text_field :title %></span>
+				<p>Body</p>
+				<span class="body-text"><%= f.text_area :body %></span>
+				<span><%= f.submit "Create Book" %></span>
+			<% end %>
+		</div>
+	</div>
+</main>
