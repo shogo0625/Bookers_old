@@ -24,7 +24,7 @@
 					<%= link_to "Edit", edit_book_path(book) %>
 				</td>
 				<td class="book-link">
-					<%= link_to "Destroy", destroy_book_path(book), method: :delete %>
+					<%= link_to "Destroy", destroy_book_path(book), method: :delete, "data-confirm" => "Are you sure?" %>
 				</td>
 			</tr>
 		<% end %>
@@ -32,14 +32,15 @@
 	</table>
 	<div class="new-book">
 		<h3 class="new-book-heading">New book</h3>
-		<div class="textarea">
-			<%= form_for(@book, url:'/books') do |f| %>
+		<%= form_for(@book) do |f| %>
+			<%= render 'layouts/error_messages' %>
+			<div class="textarea">
 				<p>Title</p>
 				<span class="title-text"><%= f.text_field :title %></span>
 				<p>Body</p>
 				<span class="body-text"><%= f.text_area :body %></span>
 				<span><%= f.submit "Create Book" %></span>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	</div>
 </main>
